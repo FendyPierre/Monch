@@ -21,7 +21,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         navigationItem.title = Auth.auth().currentUser?.uid
         
         fetchUser()
-        
+        //register UserProfile Header as an extension to UserProfileController
         collectionView?.register(UserProfileHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headerId")
         
         collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
@@ -93,7 +93,7 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         
         return header
     }
-    
+    //Top Block for Header
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
         return CGSize(width: view.frame.width, height: 200)
     }

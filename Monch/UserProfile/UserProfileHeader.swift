@@ -14,9 +14,10 @@ class UserProfileHeader: UICollectionViewCell {
     
     var user: User? {
         didSet {
+            //use this to retrieve information from user object
             setupProfileImage()
             
-            usernameLabel.text = user?.username
+            //usernameLabel.text = user?.username
         }
     }
     
@@ -25,39 +26,39 @@ class UserProfileHeader: UICollectionViewCell {
         return iv
     }()
     
-    let gridButton: UIButton = {
+    let foodButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "grid"), for: .normal)
         return button
     }()
     
-    let listButton: UIButton = {
+    let restaurantButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "list"), for: .normal)
         button.tintColor = UIColor(white: 0, alpha: 0.2)
         return button
     }()
     
-    let bookmarkButton: UIButton = {
+    let badgeButton: UIButton = {
         let button = UIButton(type: .system)
         button.setImage(#imageLiteral(resourceName: "ribbon"), for: .normal)
         button.tintColor = UIColor(white: 0, alpha: 0.2)
         return button
     }()
     
-    let usernameLabel: UILabel = {
-        let label = UILabel()
-        label.text = "username"
-        label.font = UIFont.boldSystemFont(ofSize: 14)
-        return label
-    }()
+//    let usernameLabel: UILabel = {
+//        let label = UILabel()
+//        label.text = "username"
+//        label.font = UIFont.boldSystemFont(ofSize: 14)
+//        return label
+//    }()
     
-    let postsLabel: UILabel = {
+    let foodScoreLabel: UILabel = {
         let label = UILabel()
         
-        let attributedText = NSMutableAttributedString(string: "11\n", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14)])
+        let attributedText = NSMutableAttributedString(string: "11\n", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 12)])
         
-        attributedText.append(NSAttributedString(string: "posts", attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)]))
+        attributedText.append(NSAttributedString(string: "Score", attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)]))
         
         label.attributedText = attributedText
         
@@ -66,12 +67,12 @@ class UserProfileHeader: UICollectionViewCell {
         return label
     }()
     
-    let followersLabel: UILabel = {
+    let foodRankLabel: UILabel = {
         let label = UILabel()
         
-        let attributedText = NSMutableAttributedString(string: "0\n", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14)])
+        let attributedText = NSMutableAttributedString(string: "Food Connoisseur\n", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 12)])
         
-        attributedText.append(NSAttributedString(string: "followers", attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)]))
+        attributedText.append(NSAttributedString(string: "Rank", attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)]))
         
         label.attributedText = attributedText
         
@@ -83,7 +84,7 @@ class UserProfileHeader: UICollectionViewCell {
     let followingLabel: UILabel = {
         let label = UILabel()
         
-        let attributedText = NSMutableAttributedString(string: "0\n", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14)])
+        let attributedText = NSMutableAttributedString(string: "0\n", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 12)])
         
         attributedText.append(NSAttributedString(string: "following", attributes: [NSAttributedStringKey.foregroundColor: UIColor.lightGray, NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14)]))
         
@@ -96,41 +97,58 @@ class UserProfileHeader: UICollectionViewCell {
     
     let editProfileButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Edit Profile", for: .normal)
+        button.setTitle("    Edit Profile    ", for: .normal)
         button.setTitleColor(.black, for: .normal)
-        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
         button.layer.borderColor = UIColor.lightGray.cgColor
         button.layer.borderWidth = 1
-        button.layer.cornerRadius = 3
+        button.layer.cornerRadius = 1
+        return button
+    }()
+    
+    let settingsButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("    settings    ", for: .normal)
+        button.setTitleColor(.black, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
+        button.layer.borderColor = UIColor.lightGray.cgColor
+        button.layer.borderWidth = 1
+        button.layer.cornerRadius = 1
         return button
     }()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
+
         addSubview(profileImageView)
-        profileImageView.anchor(top: topAnchor, left: self.leftAnchor, bottom: nil, right: nil, paddingTop: 12, paddingLeft: 12, paddingBottom: 0, paddingRight: 0, width: 80, height: 80)
-        profileImageView.layer.cornerRadius = 80 / 2
+        profileImageView.anchor(top: topAnchor, left: self.leftAnchor, bottom: nil, right: nil, paddingTop: 12, paddingLeft: 12, paddingBottom: 0, paddingRight: 0, width: 90, height: 90)
+        profileImageView.layer.cornerRadius = 90 / 2
         profileImageView.clipsToBounds = true
-        
+        profileImageView.layer.borderWidth = 3
+        profileImageView.layer.borderColor = UIColor.rgb(red: 0, green: 0, blue: 0).cgColor
+
         setupBottomToolbar()
-        
-        addSubview(usernameLabel)
-        usernameLabel.anchor(top: profileImageView.bottomAnchor, left: leftAnchor, bottom: gridButton.topAnchor, right: rightAnchor, paddingTop: 4, paddingLeft: 12, paddingBottom: 0, paddingRight: 12, width: 0, height: 0)
-        
         setupUserStatsView()
+
+        addSubview(foodRankLabel)
+        foodRankLabel.anchor(top: profileImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 8, paddingLeft: 12, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
         addSubview(editProfileButton)
-        editProfileButton.anchor(top: postsLabel.bottomAnchor, left: postsLabel.leftAnchor, bottom: nil, right: followingLabel.rightAnchor, paddingTop: 2, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 34)
+        editProfileButton.anchor(top: foodScoreLabel.bottomAnchor, left: profileImageView.rightAnchor , bottom: nil, right: nil, paddingTop: 2, paddingLeft: 50, paddingBottom: 0, paddingRight: 0, width: 0, height: 20)
+        editProfileButton.layer.cornerRadius = 10
+        
+        addSubview(settingsButton)
+        settingsButton.anchor(top: foodScoreLabel.bottomAnchor, left: editProfileButton.rightAnchor , bottom: nil, right: nil, paddingTop: 2, paddingLeft: 20, paddingBottom: 0, paddingRight: 0, width: 0, height: 20)
+        settingsButton.layer.cornerRadius = 10
     }
     
     fileprivate func setupUserStatsView() {
-        let stackView = UIStackView(arrangedSubviews: [postsLabel, followersLabel, followingLabel])
+        let stackView = UIStackView(arrangedSubviews: [foodScoreLabel, followingLabel])
         
-        stackView.distribution = .fillEqually
+        stackView.distribution = .fillProportionally
         
         addSubview(stackView)
-        stackView.anchor(top: topAnchor, left: profileImageView.rightAnchor, bottom: nil, right: rightAnchor, paddingTop: 12, paddingLeft: 12, paddingBottom: 0, paddingRight: 12, width: 0, height: 50)
+        stackView.anchor(top: topAnchor, left: profileImageView.rightAnchor, bottom: nil, right: rightAnchor, paddingTop: 8, paddingLeft: 12, paddingBottom: 0, paddingRight: 12, width: 0, height: 50)
     }
     
     fileprivate func setupBottomToolbar() {
@@ -141,7 +159,7 @@ class UserProfileHeader: UICollectionViewCell {
         let bottomDividerView = UIView()
         bottomDividerView.backgroundColor = UIColor.lightGray
         
-        let stackView = UIStackView(arrangedSubviews: [gridButton, listButton, bookmarkButton])
+        let stackView = UIStackView(arrangedSubviews: [foodButton, restaurantButton, badgeButton])
         
         stackView.axis = .horizontal
         stackView.distribution = .fillEqually
