@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		097BF291148D6EC00CFA9649 /* Pods_Monch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEFAE7A0BFE3DB151A3EEF50 /* Pods_Monch.framework */; };
+		AE3DE00F20BA05BE0043CB74 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE3DE00E20BA05BE0043CB74 /* GoogleService-Info.plist */; };
 		AEDE49D220B9EDBC00C5F1BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDE49D120B9EDBC00C5F1BB /* AppDelegate.swift */; };
 		AEDE49D420B9EDBC00C5F1BB /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDE49D320B9EDBC00C5F1BB /* LoginController.swift */; };
 		AEDE49D720B9EDBC00C5F1BB /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AEDE49D520B9EDBC00C5F1BB /* Main.storyboard */; };
@@ -18,10 +19,10 @@
 		AEDE49EB20B9EEF900C5F1BB /* UserProfileHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDE49EA20B9EEF900C5F1BB /* UserProfileHeader.swift */; };
 		AEDE49ED20B9EF2900C5F1BB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDE49EC20B9EF2900C5F1BB /* Extensions.swift */; };
 		AEDE49EF20B9EF4400C5F1BB /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDE49EE20B9EF4400C5F1BB /* MainTabBarController.swift */; };
-		AEDE49F320B9F53F00C5F1BB /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AEDE49F220B9F53F00C5F1BB /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AE3DE00E20BA05BE0043CB74 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AEDE49CE20B9EDBC00C5F1BB /* Monch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Monch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEDE49D120B9EDBC00C5F1BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AEDE49D320B9EDBC00C5F1BB /* LoginController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginController.swift; sourceTree = "<group>"; };
@@ -34,7 +35,6 @@
 		AEDE49EA20B9EEF900C5F1BB /* UserProfileHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserProfileHeader.swift; sourceTree = "<group>"; };
 		AEDE49EC20B9EF2900C5F1BB /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		AEDE49EE20B9EF4400C5F1BB /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
-		AEDE49F220B9F53F00C5F1BB /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AEFAE7A0BFE3DB151A3EEF50 /* Pods_Monch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Monch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B90545EC698F1D97CEBDE16A /* Pods-Monch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Monch.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Monch/Pods-Monch.debug.xcconfig"; sourceTree = "<group>"; };
 		E4396A72FDA8F9111FA80FCC /* Pods-Monch.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Monch.release.xcconfig"; path = "Pods/Target Support Files/Pods-Monch/Pods-Monch.release.xcconfig"; sourceTree = "<group>"; };
@@ -90,7 +90,7 @@
 				AEDE49E520B9EE1E00C5F1BB /* Utils */,
 				AEDE49DA20B9EDBD00C5F1BB /* LaunchScreen.storyboard */,
 				AEDE49DD20B9EDBD00C5F1BB /* Info.plist */,
-				AEDE49F220B9F53F00C5F1BB /* GoogleService-Info.plist */,
+				AE3DE00E20BA05BE0043CB74 /* GoogleService-Info.plist */,
 			);
 			path = Monch;
 			sourceTree = "<group>";
@@ -191,7 +191,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AEDE49DC20B9EDBD00C5F1BB /* LaunchScreen.storyboard in Resources */,
-				AEDE49F320B9F53F00C5F1BB /* GoogleService-Info.plist in Resources */,
+				AE3DE00F20BA05BE0043CB74 /* GoogleService-Info.plist in Resources */,
 				AEDE49D920B9EDBD00C5F1BB /* Assets.xcassets in Resources */,
 				AEDE49D720B9EDBC00C5F1BB /* Main.storyboard in Resources */,
 			);

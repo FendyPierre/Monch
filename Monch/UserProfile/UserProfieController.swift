@@ -6,8 +6,6 @@
 //  Copyright © 2018 ConchNCode. All rights reserved.
 //
 
-
-
 import UIKit
 import Firebase
 
@@ -44,6 +42,9 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
                 try Auth.auth().signOut()
                 
                 //what happens? we need to present some kind of login controller
+                let loginController = LoginController()
+                let navController = UINavigationController(rootViewController: loginController)
+                self.present(navController, animated: true, completion: nil)
                 
             } catch let signOutErr {
                 print("Failed to sign out:", signOutErr)

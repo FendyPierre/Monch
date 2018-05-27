@@ -6,7 +6,6 @@
 //  Copyright © 2018 ConchNCode. All rights reserved.
 //
 
-
 import UIKit
 import Firebase
 
@@ -110,14 +109,14 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
         guard let username = usernameTextField.text, username.characters.count > 0 else { return }
         guard let password = passwordTextField.text, password.characters.count > 0 else { return }
         
-        Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error) in
+        Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error: Error?) in
             
             if let err = error {
                 print("Failed to create user:", err)
                 return
             }
             
-            print("Successfully created user:", user)
+            print("Successfully created user:", user?.user)
             
             guard let image = self.plusPhotoButton.imageView?.image else { return }
             
@@ -130,14 +129,15 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
                     print("Failed to upload profile image:", err)
                     return
                 }
+                // COME BACKKKK!!!!!!!!!!!!!!! need to get user download
                 
-                guard let profileImageUrl = Auth.auth().currentUser?.photoURL?.absoluteString else { return }
+                print("Successfully uploaded profile image:", metadata)
+                guard let profileImageUrl = metadata?.debugDescription else { return }
                 
-                print("Successfully uploaded profile image:", profileImageUrl)
-                
-                guard let uid = Auth.auth().currentUser?.uid else { return }
-                
-                let dictionaryValues = ["username": username, "profileImageUrl": profileImageUrl]
+                //COME BACKK
+                guard let uid = Auth.auth().currentUser?.uid else {return}
+                let name = "https://firebasestorage.googleapis.com/v0/b/monch-aa5d5.appspot.com/o/profile_images%2F047B902D-21D8-47B0-B0D3-B42E4999319A?alt=media&token=f54aaf1d-c272-430e-b6e9-866ff93b8c62"
+                let dictionaryValues = ["username": username, "profileImageUrl": filename]
                 let values = [uid: dictionaryValues]
                 
                 Database.database().reference().child("users").updateChildValues(values, withCompletionBlock: { (err, ref) in
@@ -148,6 +148,12 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
                     }
                     
                     print("Successfully saved user info to db")
+                    
+                    guard let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController else { return }
+                    
+                    mainTabBarController.setupViewControllers()
+                    
+                    self.dismiss(animated: true, completion: nil)
                     
                 })
                 
@@ -236,6 +242,12 @@ extension UIView {
     }
     
 }
+
+
+
+
+
+
 
 
 

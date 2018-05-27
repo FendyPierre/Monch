@@ -158,32 +158,24 @@ class UserProfileHeader: UICollectionViewCell {
     }
     
     fileprivate func setupProfileImage() {
+        
+     
         guard let profileImageUrl = user?.profileImageUrl else { return }
+        print("profile image name:", profileImageUrl)
         
         guard let url = URL(string: profileImageUrl) else { return }
         
-        URLSession.shared.dataTask(with: url) { (data, response, err) in
-            //check for the error, then construct the image using data
-            if let err = err {
-                print("Failed to fetch profile image:", err)
-                return
+        Storage.storage().reference().child("profile_images").child(profileImageUrl).getData(maxSize:1024*1024) { data, error in
+            if let error = error {
+                print("Error \(error)")
             }
-            
-            //perhaps check for response status of 200 (HTTP OK)
-            
-            guard let data = data else { return }
-            
-            let image = UIImage(data: data)
-            
-            //need to get back onto the main UI thread
-            DispatchQueue.main.async {
-                self.profileImageView.image = image
-            }
-            
-            }.resume()
+            guard let image = UIImage(data: data!) else {return}
+            self.profileImageView.image = image
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
 }
+
