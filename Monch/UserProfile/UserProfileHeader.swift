@@ -95,6 +95,20 @@ class UserProfileHeader: UICollectionViewCell {
         return label
     }()
     
+    let bioLabel: UILabel = {
+        let label = UILabel()
+        
+        let attributedText = NSMutableAttributedString(string: "Welcome  to Munch! Please tell us about the food you love!",
+                            attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 12)])
+        
+//        label.layer.backgroundColor = UIColor.rgb(red: 211, green: 211, blue: 211).cgColor
+        label.attributedText = attributedText
+        
+        label.numberOfLines = 0
+        label.textAlignment = .left
+        return label
+    }()
+    
     let editProfileButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("    Edit Profile    ", for: .normal)
@@ -102,7 +116,7 @@ class UserProfileHeader: UICollectionViewCell {
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
         button.layer.borderColor = UIColor.lightGray.cgColor
         button.layer.borderWidth = 1
-        button.layer.cornerRadius = 1
+        button.layer.cornerRadius = 0
         return button
     }()
     
@@ -113,7 +127,7 @@ class UserProfileHeader: UICollectionViewCell {
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
         button.layer.borderColor = UIColor.lightGray.cgColor
         button.layer.borderWidth = 1
-        button.layer.cornerRadius = 1
+        button.layer.cornerRadius = 0
         return button
     }()
     
@@ -134,12 +148,14 @@ class UserProfileHeader: UICollectionViewCell {
         foodRankLabel.anchor(top: profileImageView.bottomAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: 8, paddingLeft: 12, paddingBottom: 0, paddingRight: 0, width: 0, height: 0)
         
         addSubview(editProfileButton)
-        editProfileButton.anchor(top: foodScoreLabel.bottomAnchor, left: profileImageView.rightAnchor , bottom: nil, right: nil, paddingTop: 2, paddingLeft: 50, paddingBottom: 0, paddingRight: 0, width: 0, height: 20)
+        editProfileButton.anchor(top: foodScoreLabel.bottomAnchor, left: profileImageView.rightAnchor , bottom: nil, right: nil, paddingTop: -5, paddingLeft: 50, paddingBottom: 0, paddingRight: 0, width: 0, height: 20)
         editProfileButton.layer.cornerRadius = 10
         
         addSubview(settingsButton)
-        settingsButton.anchor(top: foodScoreLabel.bottomAnchor, left: editProfileButton.rightAnchor , bottom: nil, right: nil, paddingTop: 2, paddingLeft: 20, paddingBottom: 0, paddingRight: 0, width: 0, height: 20)
+        settingsButton.anchor(top: foodScoreLabel.bottomAnchor, left: editProfileButton.rightAnchor , bottom: nil, right: nil, paddingTop: -5, paddingLeft: 50, paddingBottom: 0, paddingRight: 0, width: 0, height: 20)
         settingsButton.layer.cornerRadius = 10
+        addSubview(bioLabel)
+        bioLabel.anchor(top: editProfileButton.bottomAnchor, left: profileImageView.rightAnchor, bottom: nil, right: rightAnchor, paddingTop: 8, paddingLeft: 30, paddingBottom: 0, paddingRight: 20, width: 0, height: 0)
     }
     
     fileprivate func setupUserStatsView() {
