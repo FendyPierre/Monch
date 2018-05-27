@@ -60,6 +60,27 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		AE3DE01020BB69060043CB74 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		AE3DE01120BB690A0043CB74 /* Explore */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Explore;
+			sourceTree = "<group>";
+		};
+		AE3DE01220BB690D0043CB74 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
 		AEDE49C520B9EDBC00C5F1BB = {
 			isa = PBXGroup;
 			children = (
@@ -81,6 +102,9 @@
 		AEDE49D020B9EDBC00C5F1BB /* Monch */ = {
 			isa = PBXGroup;
 			children = (
+				AE3DE01220BB690D0043CB74 /* Chat */,
+				AE3DE01120BB690A0043CB74 /* Explore */,
+				AE3DE01020BB69060043CB74 /* Home */,
 				AEDE49D120B9EDBC00C5F1BB /* AppDelegate.swift */,
 				AEDE49EE20B9EF4400C5F1BB /* MainTabBarController.swift */,
 				AEDE49E320B9EE1400C5F1BB /* Login */,
