@@ -116,7 +116,7 @@ class UserProfileHeader: UICollectionViewCell {
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 12)
         button.layer.borderColor = UIColor.lightGray.cgColor
         button.layer.borderWidth = 1
-        button.layer.cornerRadius = 0
+        //button.layer.cornerRadius = 0
         return button
     }()
     
@@ -149,11 +149,11 @@ class UserProfileHeader: UICollectionViewCell {
         
         addSubview(editProfileButton)
         editProfileButton.anchor(top: foodScoreLabel.bottomAnchor, left: profileImageView.rightAnchor , bottom: nil, right: nil, paddingTop: -5, paddingLeft: 50, paddingBottom: 0, paddingRight: 0, width: 0, height: 20)
-        editProfileButton.layer.cornerRadius = 10
+        editProfileButton.layer.cornerRadius = 5
         
         addSubview(settingsButton)
         settingsButton.anchor(top: foodScoreLabel.bottomAnchor, left: editProfileButton.rightAnchor , bottom: nil, right: nil, paddingTop: -5, paddingLeft: 50, paddingBottom: 0, paddingRight: 0, width: 0, height: 20)
-        settingsButton.layer.cornerRadius = 10
+        settingsButton.layer.cornerRadius = 5
         addSubview(bioLabel)
         bioLabel.anchor(top: editProfileButton.bottomAnchor, left: profileImageView.rightAnchor, bottom: nil, right: rightAnchor, paddingTop: 8, paddingLeft: 30, paddingBottom: 0, paddingRight: 20, width: 0, height: 0)
     }

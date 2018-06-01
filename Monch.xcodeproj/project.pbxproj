@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		097BF291148D6EC00CFA9649 /* Pods_Monch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEFAE7A0BFE3DB151A3EEF50 /* Pods_Monch.framework */; };
+		AE1F281720BC8A2800E6C39A /* PhotoSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F281620BC8A2800E6C39A /* PhotoSelectorController.swift */; };
 		AE3DE00F20BA05BE0043CB74 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE3DE00E20BA05BE0043CB74 /* GoogleService-Info.plist */; };
 		AEDE49D220B9EDBC00C5F1BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDE49D120B9EDBC00C5F1BB /* AppDelegate.swift */; };
 		AEDE49D420B9EDBC00C5F1BB /* LoginController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDE49D320B9EDBC00C5F1BB /* LoginController.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AE1F281620BC8A2800E6C39A /* PhotoSelectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorController.swift; sourceTree = "<group>"; };
 		AE3DE00E20BA05BE0043CB74 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AEDE49CE20B9EDBC00C5F1BB /* Monch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Monch.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AEDE49D120B9EDBC00C5F1BB /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 		AE3DE01220BB690D0043CB74 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				AE1F281620BC8A2800E6C39A /* PhotoSelectorController.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -278,6 +281,7 @@
 				AEDE49EB20B9EEF900C5F1BB /* UserProfileHeader.swift in Sources */,
 				AEDE49D220B9EDBC00C5F1BB /* AppDelegate.swift in Sources */,
 				AEDE49E720B9EEA300C5F1BB /* SignUpController.swift in Sources */,
+				AE1F281720BC8A2800E6C39A /* PhotoSelectorController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
