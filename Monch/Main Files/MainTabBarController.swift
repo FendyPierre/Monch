@@ -16,13 +16,13 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         let index = viewControllers?.index(of: viewController)
         if index == 2 {
             
-            let layout = UICollectionViewFlowLayout()
-            let photoSelectorController = PhotoSelectorController(collectionViewLayout: layout)
-            let navController = UINavigationController(rootViewController: photoSelectorController)
+//            let layout = UICollectionViewFlowLayout()
+//            let photoSelectorController = PhotoSelectorController(collectionViewLayout: layout)
+//            let navController = UINavigationController(rootViewController: photoSelectorController)
+//
+//            present(navController, animated: true, completion: nil)
             
-            present(navController, animated: true, completion: nil)
-            
-            return false
+            return true
         }
         
         return true
@@ -54,9 +54,11 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         //search
         let searchNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "search_unselected"), selectedImage: #imageLiteral(resourceName: "search_selected"))
         
-        let plusNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "plus_unselected"), selectedImage: #imageLiteral(resourceName: "plus_unselected"))
+        let plusNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "burger"), selectedImage: #imageLiteral(resourceName: "burger"))
+        plusNavController.tabBarItem.image?.withRenderingMode(.alwaysOriginal)
+        plusNavController.tabBarItem.selectedImage?.withRenderingMode(.alwaysOriginal)
         
-        let likeNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "like_unselected"), selectedImage: #imageLiteral(resourceName: "like_selected"))
+        let chatNavController = templateNavController(unselectedImage: #imageLiteral(resourceName: "send2"), selectedImage: #imageLiteral(resourceName: "send2"),rootViewController: ChatController(collectionViewLayout: UICollectionViewFlowLayout()))
         
         //user profile
         let layout = UICollectionViewFlowLayout()
@@ -72,7 +74,7 @@ class MainTabBarController: UITabBarController, UITabBarControllerDelegate {
         viewControllers = [homeNavController,
                            searchNavController,
                            plusNavController,
-                           likeNavController,
+                           chatNavController,
                            userProfileNavController]
         
         //modify tab bar item insets/ 
