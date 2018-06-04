@@ -60,10 +60,10 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
         
         if isFormValid {
             signUpButton.isEnabled = true
-            signUpButton.backgroundColor = UIColor.rgb(red: 17, green: 154, blue: 237)
+            signUpButton.backgroundColor = UIColor.rgb(red: 142, green: 68, blue: 173)
         } else {
             signUpButton.isEnabled = false
-            signUpButton.backgroundColor = UIColor.rgb(red: 149, green: 204, blue: 244)
+            signUpButton.backgroundColor = UIColor.rgb(red: 155,  green: 89,  blue: 182)
         }
     }
     
@@ -91,7 +91,7 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
     let signUpButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Sign Up", for: .normal)
-        button.backgroundColor = UIColor.rgb(red: 149, green: 204, blue: 244)
+        button.backgroundColor = UIColor.rgb(red: 155,  green: 89,  blue: 182)
         
         button.layer.cornerRadius = 5
         button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 14)
@@ -135,14 +135,16 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
                 guard let profileImageUrl = metadata?.debugDescription else { return }
                 
                 //COME BACKK
-//                let dateJoined = Date
+                let bio = "Tell us about your love for food!"
+                let channelLog = ["Chanell1","Channel2","Channel3"]
+                //let dateJoined = NSDate()
                 let foodRank = "Foodie"
                 let score = 0
                 let followers = ["Follower1","Follower2","Follower3"]
                 let following = ["Followng1","Following2","Following3"]
-                let messagelog = ["Message1","Message2","Message3"]
+                let messageLog = ["Message1","Message2","Message3"]
                 guard let uid = Auth.auth().currentUser?.uid else {return}
-                let dictionaryValues = [ "foodRank":foodRank,"followers": followers, "following": following, "profileImageUrl": filename,"messagelog":messagelog, "name": username,"score" : score, "username": username,  "userId": uid] as [String : Any]
+                let dictionaryValues = [ "bio":bio,"channelLog" : channelLog,"foodRank":foodRank,"followers": followers, "following": following, "profileImageUrl": filename,"messageLog":messageLog, "name": username,"score" : score, "username": username,  "userId": uid] as [String : Any]
                 let values = [uid: dictionaryValues]
                 
                 Database.database().reference().child("users").updateChildValues(values, withCompletionBlock: { (err, ref) in
@@ -173,7 +175,7 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
         
         let attributedTitle = NSMutableAttributedString(string: "Already have an account?  ", attributes: [NSAttributedStringKey.font: UIFont.systemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.lightGray])
         
-        attributedTitle.append(NSAttributedString(string: "Sign In", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.rgb(red: 17, green: 154, blue: 237)
+        attributedTitle.append(NSAttributedString(string: "Sign In", attributes: [NSAttributedStringKey.font: UIFont.boldSystemFont(ofSize: 14), NSAttributedStringKey.foregroundColor: UIColor.rgb(red: 142, green: 68, blue: 173)
             ]))
         
         button.setAttributedTitle(attributedTitle, for: .normal)
