@@ -10,6 +10,8 @@ import UIKit
 
 class ChatHeader:  UICollectionViewCell{
     
+    let searchBar = UISearchBar()
+    
     let messageButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("  Message ", for: .normal)
@@ -37,8 +39,18 @@ class ChatHeader:  UICollectionViewCell{
         stackView.distribution = .fillEqually
         
         addSubview(stackView)
-        stackView.anchor(top: topAnchor, left:leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 50)
+        stackView.anchor(top: topAnchor, left:leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 0, height: 40)
         stackView.centerXAnchor.constraint(equalTo: centerXAnchor)
+        
+        let verticalDividerView = UIView()
+        verticalDividerView.backgroundColor = UIColor.lightGray
+        
+        addSubview(verticalDividerView)
+        verticalDividerView.anchor(top: topAnchor, left: messageButton.rightAnchor, bottom: nil, right: nil, paddingTop: 5, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 1, height: 30)
+        
+        addSubview(searchBar)
+        searchBar.anchor(top: messageButton.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 10, width: 0, height: 30)
+        searchBar.searchBarStyle = .minimal
     }
     
     //how view cells are initialized

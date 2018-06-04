@@ -14,18 +14,17 @@ class ChatMessage:  UICollectionViewCell{
     var user: User? {
         didSet {
             //use this to retrieve information from user object
-            
+            setupProfileImage()
             
             //usernameLabel.text = user?.username
         }
     }
-    
     let profileImageView: UIImageView = {
         let iv = UIImageView()
         return iv
     }()
-    
     fileprivate func setupProfileImage() {
+        
         
         guard let profileImageUrl = user?.profileImageUrl else { return }
         print("profile image name:", profileImageUrl)
@@ -45,7 +44,6 @@ class ChatMessage:  UICollectionViewCell{
         label.font = UIFont.boldSystemFont(ofSize: 14)
         return label
     }()
-    
     let lastMessageLabel: UILabel = {
         let lastMessage = "This is the last message you or your friend sent in that"
         let label = UILabel()
@@ -53,7 +51,6 @@ class ChatMessage:  UICollectionViewCell{
         label.font = UIFont.systemFont(ofSize: 14)
         return label
     }()
-    
     let friendRankLabel: UILabel = {
         let friendRank = "Food Connoisseur"
         let label = UILabel()
