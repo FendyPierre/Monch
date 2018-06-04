@@ -11,31 +11,28 @@ import Firebase
 
 class ChatMessage:  UICollectionViewCell{
     
-    var user: User? {
-        didSet {
-            //use this to retrieve information from user object
-            setupProfileImage()
-            
-            //usernameLabel.text = user?.username
-        }
+    var friendName = "Friend Name"
+    var friendRank = "Food Connoisseur"
+    var LastMessage = "This is the last message you or your friend sent in that"
+    var profileImage: UIImage {
+        let image = UIImage(named: "profilephoto")
+        return image!
     }
+    
+    
     let profileImageView: UIImageView = {
         let iv = UIImageView()
         return iv
     }()
-    fileprivate func setupProfileImage() {
-        
-        
-        guard let profileImageUrl = user?.profileImageUrl else { return }
-        print("profile image name:", profileImageUrl)
-        Storage.storage().reference().child("profile_images").child(profileImageUrl).getData(maxSize:1024*1024) { data, error in
-            if let error = error {
-                print("Error \(error)")
-            }
-            guard let image = UIImage(data: data!) else {return}
-            self.profileImageView.image = image
-        }
-    }
+    
+//    let timeStampLabel: UILabel = {
+//        let time = NSDate()
+//        let label = UILabel()
+//        label.text = time
+//        label.font = UIFont.boldSystemFont(ofSize: 14)
+//        return label
+//        return timeLabel
+//    }()
     
     let friendNameLabel: UILabel = {
         let friendName = "Friend Name"
@@ -73,6 +70,7 @@ class ChatMessage:  UICollectionViewCell{
     let end = (padding * 2) + pwidth
     
     addSubview(profileImageView)
+    profileImageView.image = profileImage
     profileImageView.anchor(top: topAnchor, left: leftAnchor, bottom: nil, right: nil, paddingTop: padding, paddingLeft: padding, paddingBottom: 0, paddingRight: 0, width: pwidth, height: pwidth)
     profileImageView.layer.cornerRadius = pwidth / 2
     profileImageView.clipsToBounds = true
@@ -86,12 +84,13 @@ class ChatMessage:  UICollectionViewCell{
         bottomDividerView.anchor(top: bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: end, paddingBottom: 0, paddingRight: 0, width: 0, height: 0.5)
         
     addSubview(friendNameLabel)
-        friendNameLabel.anchor(top: topAnchor, left: profileImageView.rightAnchor, bottom: nil, right: rightAnchor, paddingTop: 25, paddingLeft: padding, paddingBottom: 0, paddingRight: 0, width: 0, height: 10)
+        friendNameLabel.anchor(top: topAnchor, left: profileImageView.rightAnchor, bottom: nil, right: nil, paddingTop: 25, paddingLeft: padding, paddingBottom: 0, paddingRight: 0, width: 0, height: 10)
         
     addSubview(lastMessageLabel)
         lastMessageLabel.anchor(top: friendNameLabel.bottomAnchor, left: profileImageView.rightAnchor, bottom: nil, right: rightAnchor, paddingTop: 10, paddingLeft: padding, paddingBottom: 0, paddingRight: 0, width: 0, height: 10)
     addSubview(friendRankLabel)
         friendRankLabel.anchor(top: lastMessageLabel.bottomAnchor, left: profileImageView.rightAnchor, bottom: nil, right: nil, paddingTop: 10, paddingLeft: padding, paddingBottom: 0, paddingRight: 0, width: 0, height: 10)
+//    addSubview(timeStamp)
     }
     
     required init?(coder aDecoder: NSCoder) {

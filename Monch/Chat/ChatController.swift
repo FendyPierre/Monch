@@ -91,13 +91,27 @@ class ChatController: UICollectionViewController, UICollectionViewDelegateFlowLa
             //tint status bar
         navigationController?.navigationBar.tintColor = .black
         
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "send2").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: nil)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "send2").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleNewMessage))
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "gear").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: nil)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(image: #imageLiteral(resourceName: "gear").withRenderingMode(.alwaysOriginal), style: .plain, target: self, action: #selector(handleSettings))
+        
         
         let logo = UIImage(named: "monch.png")
         let imageView = UIImageView(image: logo)
         //self.navigationItem.titleView = imageView
+    }
+    @objc func handleNewMessage(){
+    
+        let newMessageController = NewMessageController()
+        let navController = UINavigationController(rootViewController: newMessageController)
+        present(navController, animated: true, completion: nil)
+    }
+
+    @objc func handleSettings(){
+    
+        let newMessageController = MessageSettingsController()
+        let navController = UINavigationController(rootViewController: newMessageController)
+        present(navController, animated: true, completion: nil)
     }
 
 }

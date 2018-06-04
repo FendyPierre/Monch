@@ -11,6 +11,8 @@
 		AE1F281720BC8A2800E6C39A /* PhotoSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F281620BC8A2800E6C39A /* PhotoSelectorController.swift */; };
 		AE3DE00F20BA05BE0043CB74 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AE3DE00E20BA05BE0043CB74 /* GoogleService-Info.plist */; };
 		AE472C2620C49547005F6FE9 /* ChatMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE472C2520C49547005F6FE9 /* ChatMessage.swift */; };
+		AE472C2820C5A3A1005F6FE9 /* NewMessageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE472C2720C5A3A1005F6FE9 /* NewMessageController.swift */; };
+		AE472C2A20C5B112005F6FE9 /* MessageSettingsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE472C2920C5B112005F6FE9 /* MessageSettingsController.swift */; };
 		AEB3B9CB20C30F7000306C66 /* Chatheader.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB3B9CA20C30F7000306C66 /* Chatheader.swift */; };
 		AEB3B9CD20C3224B00306C66 /* ChatController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEB3B9CC20C3224A00306C66 /* ChatController.swift */; };
 		AEDE49D220B9EDBC00C5F1BB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AEDE49D120B9EDBC00C5F1BB /* AppDelegate.swift */; };
@@ -29,6 +31,8 @@
 		AE1F281620BC8A2800E6C39A /* PhotoSelectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorController.swift; sourceTree = "<group>"; };
 		AE3DE00E20BA05BE0043CB74 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		AE472C2520C49547005F6FE9 /* ChatMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatMessage.swift; sourceTree = "<group>"; };
+		AE472C2720C5A3A1005F6FE9 /* NewMessageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewMessageController.swift; sourceTree = "<group>"; };
+		AE472C2920C5B112005F6FE9 /* MessageSettingsController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageSettingsController.swift; sourceTree = "<group>"; };
 		AEB3B9CA20C30F7000306C66 /* Chatheader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chatheader.swift; sourceTree = "<group>"; };
 		AEB3B9CC20C3224A00306C66 /* ChatController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatController.swift; sourceTree = "<group>"; };
 		AEDE49CE20B9EDBC00C5F1BB /* Monch.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Monch.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,9 +97,11 @@
 		AEB3B9C920C30F2400306C66 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				AEB3B9CC20C3224A00306C66 /* ChatController.swift */,
 				AEB3B9CA20C30F7000306C66 /* Chatheader.swift */,
 				AE472C2520C49547005F6FE9 /* ChatMessage.swift */,
-				AEB3B9CC20C3224A00306C66 /* ChatController.swift */,
+				AE472C2920C5B112005F6FE9 /* MessageSettingsController.swift */,
+				AE472C2720C5A3A1005F6FE9 /* NewMessageController.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -301,12 +307,14 @@
 			files = (
 				AEDE49D420B9EDBC00C5F1BB /* LoginController.swift in Sources */,
 				AEDE49ED20B9EF2900C5F1BB /* Extensions.swift in Sources */,
+				AE472C2A20C5B112005F6FE9 /* MessageSettingsController.swift in Sources */,
 				AEDE49E920B9EEDF00C5F1BB /* UserProfieController.swift in Sources */,
 				AEDE49EF20B9EF4400C5F1BB /* MainTabBarController.swift in Sources */,
 				AE472C2620C49547005F6FE9 /* ChatMessage.swift in Sources */,
 				AEB3B9CD20C3224B00306C66 /* ChatController.swift in Sources */,
 				AEDE49EB20B9EEF900C5F1BB /* UserProfileHeader.swift in Sources */,
 				AEDE49D220B9EDBC00C5F1BB /* AppDelegate.swift in Sources */,
+				AE472C2820C5A3A1005F6FE9 /* NewMessageController.swift in Sources */,
 				AEDE49E720B9EEA300C5F1BB /* SignUpController.swift in Sources */,
 				AE1F281720BC8A2800E6C39A /* PhotoSelectorController.swift in Sources */,
 				AEB3B9CB20C30F7000306C66 /* Chatheader.swift in Sources */,

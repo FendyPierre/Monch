@@ -33,8 +33,19 @@ class ChatHeader:  UICollectionViewCell{
         return button
     }()
     
+    let notificationButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle(" Notification   ", for: .normal)
+        button.setTitleColor(.gray, for: .normal)
+        button.titleLabel?.font = UIFont.boldSystemFont(ofSize: 20)
+        button.layer.borderColor = UIColor.lightGray.cgColor
+        button.layer.borderWidth = 0
+        button.layer.cornerRadius = 0
+        return button
+    }()
+    
     fileprivate func setupHeader() {
-        let stackView = UIStackView(arrangedSubviews: [messageButton, channelButton])
+        let stackView = UIStackView(arrangedSubviews: [messageButton, channelButton, notificationButton])
         
         stackView.distribution = .fillEqually
         
@@ -45,8 +56,14 @@ class ChatHeader:  UICollectionViewCell{
         let verticalDividerView = UIView()
         verticalDividerView.backgroundColor = UIColor.lightGray
         
+        let secondVerticalDividerView = UIView()
+        verticalDividerView.backgroundColor = UIColor.lightGray
+        
+        
         addSubview(verticalDividerView)
         verticalDividerView.anchor(top: topAnchor, left: messageButton.rightAnchor, bottom: nil, right: nil, paddingTop: 5, paddingLeft: 0, paddingBottom: 0, paddingRight: 0, width: 1, height: 30)
+        addSubview(secondVerticalDividerView)
+        secondVerticalDividerView.anchor(top: topAnchor, left: messageButton.rightAnchor, bottom: nil, right: nil, paddingTop: 5, paddingLeft: 0, paddingBottom: 0, paddingRight: -60, width: 1, height: 30)
         
         addSubview(searchBar)
         searchBar.anchor(top: messageButton.bottomAnchor, left: leftAnchor, bottom: nil, right: rightAnchor, paddingTop: 0, paddingLeft: 10, paddingBottom: 0, paddingRight: 10, width: 0, height: 30)
