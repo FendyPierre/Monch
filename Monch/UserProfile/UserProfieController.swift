@@ -123,6 +123,11 @@ struct User {
     let profileImageUrl: String
     let name: String
     let foodRank: String
+    let userId: String
+    let score: String
+    let followers: String
+    let following: String
+    let messagelog: String
 //    let Follower: Dictionary<<#Key: Hashable#>, Any>
 //    let Following: Dictionary
     
@@ -131,7 +136,14 @@ struct User {
         self.username = dictionary["username"] as? String ?? ""
         self.profileImageUrl = dictionary["profileImageUrl"]  as? String ?? ""
         self.name = dictionary["username"] as? String ?? ""
-        self.foodRank = "Foodie"
+        self.foodRank = dictionary["userId"] as? String ?? ""
+        self.userId = dictionary["userId"] as? String ?? ""
+        self.score = dictionary["score"] as? String ?? ""
+        self.followers = dictionary["followers"] as? String ?? ""
+        self.following = dictionary["following"] as? String ?? ""
+        self.messagelog = dictionary["messagelog"] as? String ?? ""
+
+        
     }
 }
 

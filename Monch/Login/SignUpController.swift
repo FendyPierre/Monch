@@ -135,9 +135,13 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
                 guard let profileImageUrl = metadata?.debugDescription else { return }
                 
                 //COME BACKK
+                let foodRank = "Foodie"
+                let score = "0"
+                let followers = "0"
+                let following = "0"
+                let messagelog = "empty"
                 guard let uid = Auth.auth().currentUser?.uid else {return}
-                let name = "https://firebasestorage.googleapis.com/v0/b/monch-aa5d5.appspot.com/o/profile_images%2F047B902D-21D8-47B0-B0D3-B42E4999319A?alt=media&token=f54aaf1d-c272-430e-b6e9-866ff93b8c62"
-                let dictionaryValues = ["username": username, "profileImageUrl": filename]
+                let dictionaryValues = [ "foodRank":foodRank,"followers": followers, "following": following, "profileImageUrl": filename,"messagelog":messagelog, "score" : score, "username": username,  "userId": uid]
                 let values = [uid: dictionaryValues]
                 
                 Database.database().reference().child("users").updateChildValues(values, withCompletionBlock: { (err, ref) in
