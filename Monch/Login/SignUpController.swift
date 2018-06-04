@@ -135,13 +135,14 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
                 guard let profileImageUrl = metadata?.debugDescription else { return }
                 
                 //COME BACKK
+//                let dateJoined = Date
                 let foodRank = "Foodie"
-                let score = "0"
-                let followers = "0"
-                let following = "0"
-                let messagelog = "empty"
+                let score = 0
+                let followers = ["Follower1","Follower2","Follower3"]
+                let following = ["Followng1","Following2","Following3"]
+                let messagelog = ["Message1","Message2","Message3"]
                 guard let uid = Auth.auth().currentUser?.uid else {return}
-                let dictionaryValues = [ "foodRank":foodRank,"followers": followers, "following": following, "profileImageUrl": filename,"messagelog":messagelog, "score" : score, "username": username,  "userId": uid]
+                let dictionaryValues = [ "foodRank":foodRank,"followers": followers, "following": following, "profileImageUrl": filename,"messagelog":messagelog, "name": username,"score" : score, "username": username,  "userId": uid] as [String : Any]
                 let values = [uid: dictionaryValues]
                 
                 Database.database().reference().child("users").updateChildValues(values, withCompletionBlock: { (err, ref) in

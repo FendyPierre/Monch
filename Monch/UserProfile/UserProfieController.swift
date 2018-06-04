@@ -119,19 +119,17 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
 }
 
 struct User {
+    
     let username: String
     let profileImageUrl: String
     let name: String
     let foodRank: String
     let userId: String
     let score: String
-    let followers: String
-    let following: String
-    let messagelog: String
-//    let Follower: Dictionary<<#Key: Hashable#>, Any>
-//    let Following: Dictionary
-    
-    
+    var followers = [String]()
+    var following = [String]()
+    var messagelog = [String]()
+
     init(dictionary: [String: Any]) {
         self.username = dictionary["username"] as? String ?? ""
         self.profileImageUrl = dictionary["profileImageUrl"]  as? String ?? ""
@@ -139,9 +137,9 @@ struct User {
         self.foodRank = dictionary["userId"] as? String ?? ""
         self.userId = dictionary["userId"] as? String ?? ""
         self.score = dictionary["score"] as? String ?? ""
-        self.followers = dictionary["followers"] as? String ?? ""
-        self.following = dictionary["following"] as? String ?? ""
-        self.messagelog = dictionary["messagelog"] as? String ?? ""
+        self.followers = dictionary["followers"] as? [String] ?? [""]
+        self.following = dictionary["following"] as? [String] ?? [""]
+        self.messagelog = dictionary["messagelog"] as? [String] ?? [""]
 
         
     }

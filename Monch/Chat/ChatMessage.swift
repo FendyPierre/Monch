@@ -75,7 +75,7 @@ class ChatMessage:  UICollectionViewCell{
     profileImageView.layer.cornerRadius = pwidth / 2
     profileImageView.clipsToBounds = true
     profileImageView.layer.borderWidth = 1
-    profileImageView.layer.borderColor = UIColor.rgb(red: 0, green: 0, blue: 0).cgColor
+    profileImageView.layer.borderColor = UIColor.gray.cgColor
 
     let bottomDividerView = UIView()
     bottomDividerView.backgroundColor = UIColor.lightGray
