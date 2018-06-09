@@ -14,10 +14,12 @@ class NewMessageController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavigationButtons()
+        self.navigationItem.title = "Create New Chat"
         fetchUser()
+        fetchAllUsers()
     }
     var user: User?
-    fileprivate func fetchUser(){
+    func fetchUser(){
         guard let uid = Auth.auth().currentUser?.uid else { return }
         
         Database.database().reference().child("users").child(uid).observeSingleEvent(of: .value, with: { (snapshot) in
@@ -26,12 +28,32 @@ class NewMessageController: UITableViewController {
             guard let dictionary = snapshot.value as? [String: Any] else { return }
             
             self.user = User(dictionary: dictionary)
-            //self.navigationItem.title = self.user?.username
-            self.tableView.reloadData()
+            
+            self.tableView?.reloadData()
             
         }) { (err) in
             print("Failed to fetch user:", err)
         }
+        
+    }
+    var listOfUsers = [String]()
+    var users = [String: Any]()
+    func fetchAllUsers(){
+        
+        Database.database().reference().child("allUsers").observeSingleEvent(of: .value, with: { (snapshot) in
+            print(snapshot.value ?? "")
+            
+            guard let dictionary = snapshot.value as? [String: Any] else { return }
+            
+            self.users = dictionary
+            print("Here are all the KEYS:", self.users.keys)
+            self.tableView.reloadData()
+            print("Here are All users",dictionary)
+            
+        }) { (err) in
+            print("Failed to fetch user:", err)
+        }
+        
     }
     fileprivate func setupNavigationButtons() {
         navigationController?.navigationBar.tintColor = .black
@@ -49,13 +71,20 @@ class NewMessageController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return self.users.count
     }
     
     let cellId = "cellId"
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        var names = [String]()
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: cellId)
-        cell.textLabel?.text = self.user?.name
+        for keys in self.users.keys{
+            print("printing key:", keys)
+            names.append(keys)
+            
+        }
+        cell.textLabel?.text = names[indexPath.row]
+        print(names)
         return cell
     }
      let searchBar = UISearchBar()

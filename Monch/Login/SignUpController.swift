@@ -109,6 +109,24 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
         guard let username = usernameTextField.text, username.characters.count > 0 else { return }
         guard let password = passwordTextField.text, password.characters.count > 0 else { return }
         
+        //check if username is taken
+        
+        let ref = Database.database().reference()
+            ref.child("allUsers").child(username).observeSingleEvent(of: .value, with: {(snapshot) in
+                
+//                print("This is the snapshot:",snapshot)
+                if snapshot.hasChild(username){
+                    print("Username already exists")
+                }
+                else {
+                    
+                    print("Username does not excist")
+                    
+                }
+                
+            })
+        
+        
         Auth.auth().createUser(withEmail: email, password: password, completion: { (user, error: Error?) in
             
             if let err = error {
@@ -138,15 +156,20 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
                 let bio = "Tell us about your love for food!"
                 let channelLog = ["Chanell1","Channel2","Channel3"]
                 //let dateJoined = NSDate()
+                let email = Auth.auth().currentUser?.email
                 let foodRank = "Foodie"
+                let privateMessaging = false
                 let score = 0
                 let followers = ["Follower1","Follower2","Follower3"]
                 let following = ["Followng1","Following2","Following3"]
                 let messageLog = ["Message1","Message2","Message3"]
                 guard let uid = Auth.auth().currentUser?.uid else {return}
-                let dictionaryValues = [ "bio":bio,"channelLog" : channelLog,"foodRank":foodRank,"followers": followers, "following": following, "profileImageUrl": filename,"messageLog":messageLog, "name": username,"score" : score, "username": username,  "userId": uid] as [String : Any]
+                let dictionaryValues = [ "bio":bio,"channelLog" : channelLog,"email":email,"foodRank":foodRank,"followers": followers, "following": following, "profileImageUrl": filename,"messageLog":messageLog, "name": username,"privateMessaging": privateMessaging,"score" : score, "username": username,  "userId": uid] as [String : Any]
                 let values = [uid: dictionaryValues]
                 
+                let userDictionary = [ "userId": uid, "name":username,"profileImageUrl": filename,]
+                //insert User into private "users" node
+                let userValues = [username: userDictionary]
                 Database.database().reference().child("users").updateChildValues(values, withCompletionBlock: { (err, ref) in
                     
                     if let err = err {
@@ -155,6 +178,16 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
                     }
                     
                     print("Successfully saved user info to db")
+                    // insert users in public "allUsers" node
+                    Database.database().reference().child("allUsers").updateChildValues(userValues, withCompletionBlock: { (err, ref) in
+                        
+                        if let err = err {
+                            print("Failed to save user info into db:", err)
+                            return
+                        }
+                    
+                        
+                        print("Successfully saved user info to db")
                     
                     guard let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController else { return }
                     
@@ -164,7 +197,7 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
                     
                 })
                 
-                
+                })
             })
             
         })
