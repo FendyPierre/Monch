@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		097BF291148D6EC00CFA9649 /* Pods_Monch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AEFAE7A0BFE3DB151A3EEF50 /* Pods_Monch.framework */; };
+		4453FFF020D9F32100B872F8 /* SharePhotoController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4453FFED20D9F32000B872F8 /* SharePhotoController.swift */; };
+		4453FFF120D9F32100B872F8 /* PhotoSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4453FFEE20D9F32000B872F8 /* PhotoSelectorCell.swift */; };
+		4453FFF220D9F32100B872F8 /* PhotoSelectorHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4453FFEF20D9F32100B872F8 /* PhotoSelectorHeader.swift */; };
+		4453FFF420D9F87B00B872F8 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4453FFF320D9F87B00B872F8 /* Post.swift */; };
 		44C769D820C8A22F00700C9A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C769D720C8A22F00700C9A /* User.swift */; };
 		44C769DA20C8D4F300700C9A /* users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C769D920C8D4F300700C9A /* users.swift */; };
 		AE1F281720BC8A2800E6C39A /* PhotoSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F281620BC8A2800E6C39A /* PhotoSelectorController.swift */; };
@@ -30,6 +34,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4453FFED20D9F32000B872F8 /* SharePhotoController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SharePhotoController.swift; sourceTree = "<group>"; };
+		4453FFEE20D9F32000B872F8 /* PhotoSelectorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSelectorCell.swift; sourceTree = "<group>"; };
+		4453FFEF20D9F32100B872F8 /* PhotoSelectorHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSelectorHeader.swift; sourceTree = "<group>"; };
+		4453FFF320D9F87B00B872F8 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		44C769D720C8A22F00700C9A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		44C769D920C8D4F300700C9A /* users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = users.swift; sourceTree = "<group>"; };
 		AE1F281620BC8A2800E6C39A /* PhotoSelectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorController.swift; sourceTree = "<group>"; };
@@ -79,6 +87,7 @@
 		44C769D420C8A06D00700C9A /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4453FFF320D9F87B00B872F8 /* Post.swift */,
 				44C769D720C8A22F00700C9A /* User.swift */,
 				44C769D920C8D4F300700C9A /* users.swift */,
 			);
@@ -102,6 +111,9 @@
 		AE3DE01220BB690D0043CB74 /* Add Photo */ = {
 			isa = PBXGroup;
 			children = (
+				4453FFEE20D9F32000B872F8 /* PhotoSelectorCell.swift */,
+				4453FFEF20D9F32100B872F8 /* PhotoSelectorHeader.swift */,
+				4453FFED20D9F32000B872F8 /* SharePhotoController.swift */,
 				AE1F281620BC8A2800E6C39A /* PhotoSelectorController.swift */,
 			);
 			path = "Add Photo";
@@ -122,6 +134,7 @@
 		AEB3B9CE20C326DF00306C66 /* Main Files */ = {
 			isa = PBXGroup;
 			children = (
+				AEDE49E520B9EE1E00C5F1BB /* Utils */,
 				44C769D420C8A06D00700C9A /* Model */,
 				AEDE49D120B9EDBC00C5F1BB /* AppDelegate.swift */,
 				AEDE49EE20B9EF4400C5F1BB /* MainTabBarController.swift */,
@@ -160,7 +173,6 @@
 				AEDE49E320B9EE1400C5F1BB /* Login */,
 				AEDE49E420B9EE1B00C5F1BB /* UserProfile */,
 				AEDE49D820B9EDBD00C5F1BB /* Assets.xcassets */,
-				AEDE49E520B9EE1E00C5F1BB /* Utils */,
 				AEDE49DD20B9EDBD00C5F1BB /* Info.plist */,
 				AE3DE00E20BA05BE0043CB74 /* GoogleService-Info.plist */,
 			);
@@ -325,13 +337,17 @@
 				AE472C2A20C5B112005F6FE9 /* MessageSettingsController.swift in Sources */,
 				AEDE49E920B9EEDF00C5F1BB /* UserProfieController.swift in Sources */,
 				AEDE49EF20B9EF4400C5F1BB /* MainTabBarController.swift in Sources */,
+				4453FFF020D9F32100B872F8 /* SharePhotoController.swift in Sources */,
 				AE472C2620C49547005F6FE9 /* ChatMessage.swift in Sources */,
 				AEB3B9CD20C3224B00306C66 /* ChatController.swift in Sources */,
 				AEDE49EB20B9EEF900C5F1BB /* UserProfileHeader.swift in Sources */,
 				44C769D820C8A22F00700C9A /* User.swift in Sources */,
 				AEDE49D220B9EDBC00C5F1BB /* AppDelegate.swift in Sources */,
+				4453FFF220D9F32100B872F8 /* PhotoSelectorHeader.swift in Sources */,
 				AE472C2820C5A3A1005F6FE9 /* NewMessageController.swift in Sources */,
 				AEDE49E720B9EEA300C5F1BB /* SignUpController.swift in Sources */,
+				4453FFF120D9F32100B872F8 /* PhotoSelectorCell.swift in Sources */,
+				4453FFF420D9F87B00B872F8 /* Post.swift in Sources */,
 				AE1F281720BC8A2800E6C39A /* PhotoSelectorController.swift in Sources */,
 				AEB3B9CB20C30F7000306C66 /* Chatheader.swift in Sources */,
 			);
