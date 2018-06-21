@@ -141,64 +141,64 @@ class SignUpController: UIViewController, UIImagePickerControllerDelegate, UINav
             guard let uploadData = UIImageJPEGRepresentation(image, 0.3) else { return }
             
             let filename = NSUUID().uuidString
-            Storage.storage().reference().child("profile_images").child(filename).putData(uploadData, metadata: nil, completion: { (metadata, err) in
+            let storageRef = Storage.storage().reference().child("profile_images").child(filename)
+            storageRef.putData(uploadData, metadata: nil, completion: { (metadata, err) in
                 
                 if let err = err {
                     print("Failed to upload profile image:", err)
                     return
                 }
-                // COME BACKKKK!!!!!!!!!!!!!!! need to get user download
                 
-                print("Successfully uploaded profile image:", metadata)
-                guard let profileImageUrl = metadata?.debugDescription else { return }
-                
-                //COME BACKK
-                let bio = "Tell us about your love for food!"
-                let channelLog = ["Chanell1","Channel2","Channel3"]
-                //let dateJoined = NSDate()
-                let email = Auth.auth().currentUser?.email
-                let foodRank = "Foodie"
-                let privateMessaging = false
-                let score = 0
-                let followers = ["Follower1","Follower2","Follower3"]
-                let following = ["Followng1","Following2","Following3"]
-                let messageLog = ["Message1","Message2","Message3"]
-                guard let uid = Auth.auth().currentUser?.uid else {return}
-                let dictionaryValues = [ "bio":bio,"channelLog" : channelLog,"email":email,"foodRank":foodRank,"followers": followers, "following": following, "profileImageUrl": filename,"messageLog":messageLog, "name": username,"privateMessaging": privateMessaging,"score" : score, "username": username,  "userId": uid] as [String : Any]
-                let values = [uid: dictionaryValues]
-                
-                let userDictionary = [ "userId": uid, "name":username,"profileImageUrl": filename,]
-                //insert User into private "users" node
-                let userValues = [username: userDictionary]
-                Database.database().reference().child("users").updateChildValues(values, withCompletionBlock: { (err, ref) in
+                storageRef.downloadURL(completion: { (downloadURL, err) in
+                    guard let profileImageUrl = downloadURL?.absoluteString else { return }
                     
-                    if let err = err {
-                        print("Failed to save user info into db:", err)
-                        return
-                    }
+        
+                    let bio = "Tell us about your love for food!"
+                    let channelLog = ["Chanell1","Channel2","Channel3"]
+                    let email = Auth.auth().currentUser?.email
+                    let foodRank = "Foodie"
+                    let privateMessaging = false
+                    let score = 0
+                    let followers = ["Follower1","Follower2","Follower3"]
+                    let following = ["Followng1","Following2","Following3"]
+                    let messageLog = ["Message1","Message2","Message3"]
+                    guard let uid = Auth.auth().currentUser?.uid else {return}
+                    let dictionaryValues = [ "bio":bio,"channelLog" : channelLog,"email":email,"foodRank":foodRank,"followers": followers, "following": following, "joinedDate": Date().timeIntervalSince1970 ,"profileImageUrl": profileImageUrl,"messageLog":messageLog, "name": username,"privateMessaging": privateMessaging,"score" : score, "username": username,  "userId": uid] as [String : Any]
+                    let values = [uid: dictionaryValues]
                     
-                    print("Successfully saved user info to db")
-                    // insert users in public "allUsers" node
-                    Database.database().reference().child("allUsers").updateChildValues(userValues, withCompletionBlock: { (err, ref) in
+                    let userDictionary = [ "userId": uid, "name":username,"profileImageUrl": filename,]
+                    //insert User into private "users" node
+                    let userValues = [username: userDictionary]
+                    Database.database().reference().child("users").updateChildValues(values, withCompletionBlock: { (err, ref) in
                         
                         if let err = err {
                             print("Failed to save user info into db:", err)
                             return
                         }
-                    
                         
                         print("Successfully saved user info to db")
-                    
-                    guard let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController else { return }
-                    
-                    mainTabBarController.setupViewControllers()
-                    
-                    self.dismiss(animated: true, completion: nil)
+                        // insert users in public "allUsers" node
+                        Database.database().reference().child("allUsers").updateChildValues(userValues, withCompletionBlock: { (err, ref) in
+                            
+                            if let err = err {
+                                print("Failed to save user info into db:", err)
+                                return
+                            }
+                        
+                            
+                            print("Successfully saved user info to db")
+                        
+                        guard let mainTabBarController = UIApplication.shared.keyWindow?.rootViewController as? MainTabBarController else { return }
+                        
+                        mainTabBarController.setupViewControllers()
+                        
+                        self.dismiss(animated: true, completion: nil)
                     
                 })
                 
                 })
             })
+        })
             
         })
     }

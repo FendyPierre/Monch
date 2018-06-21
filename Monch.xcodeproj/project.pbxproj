@@ -12,6 +12,8 @@
 		4453FFF120D9F32100B872F8 /* PhotoSelectorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4453FFEE20D9F32000B872F8 /* PhotoSelectorCell.swift */; };
 		4453FFF220D9F32100B872F8 /* PhotoSelectorHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4453FFEF20D9F32100B872F8 /* PhotoSelectorHeader.swift */; };
 		4453FFF420D9F87B00B872F8 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4453FFF320D9F87B00B872F8 /* Post.swift */; };
+		446027D420DB3EEE008E1810 /* UserProfileFoodPhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446027D320DB3EEE008E1810 /* UserProfileFoodPhotoCell.swift */; };
+		446027D720DB4C8B008E1810 /* CustomImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 446027D620DB4C8B008E1810 /* CustomImageView.swift */; };
 		44C769D820C8A22F00700C9A /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C769D720C8A22F00700C9A /* User.swift */; };
 		44C769DA20C8D4F300700C9A /* users.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C769D920C8D4F300700C9A /* users.swift */; };
 		AE1F281720BC8A2800E6C39A /* PhotoSelectorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE1F281620BC8A2800E6C39A /* PhotoSelectorController.swift */; };
@@ -38,6 +40,8 @@
 		4453FFEE20D9F32000B872F8 /* PhotoSelectorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSelectorCell.swift; sourceTree = "<group>"; };
 		4453FFEF20D9F32100B872F8 /* PhotoSelectorHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoSelectorHeader.swift; sourceTree = "<group>"; };
 		4453FFF320D9F87B00B872F8 /* Post.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		446027D320DB3EEE008E1810 /* UserProfileFoodPhotoCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserProfileFoodPhotoCell.swift; sourceTree = "<group>"; };
+		446027D620DB4C8B008E1810 /* CustomImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomImageView.swift; sourceTree = "<group>"; };
 		44C769D720C8A22F00700C9A /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		44C769D920C8D4F300700C9A /* users.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = users.swift; sourceTree = "<group>"; };
 		AE1F281620BC8A2800E6C39A /* PhotoSelectorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoSelectorController.swift; sourceTree = "<group>"; };
@@ -193,6 +197,7 @@
 			children = (
 				AEDE49E820B9EEDF00C5F1BB /* UserProfieController.swift */,
 				AEDE49EA20B9EEF900C5F1BB /* UserProfileHeader.swift */,
+				446027D320DB3EEE008E1810 /* UserProfileFoodPhotoCell.swift */,
 			);
 			path = UserProfile;
 			sourceTree = "<group>";
@@ -201,6 +206,7 @@
 			isa = PBXGroup;
 			children = (
 				AEDE49EC20B9EF2900C5F1BB /* Extensions.swift */,
+				446027D620DB4C8B008E1810 /* CustomImageView.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -341,11 +347,13 @@
 				AE472C2620C49547005F6FE9 /* ChatMessage.swift in Sources */,
 				AEB3B9CD20C3224B00306C66 /* ChatController.swift in Sources */,
 				AEDE49EB20B9EEF900C5F1BB /* UserProfileHeader.swift in Sources */,
+				446027D720DB4C8B008E1810 /* CustomImageView.swift in Sources */,
 				44C769D820C8A22F00700C9A /* User.swift in Sources */,
 				AEDE49D220B9EDBC00C5F1BB /* AppDelegate.swift in Sources */,
 				4453FFF220D9F32100B872F8 /* PhotoSelectorHeader.swift in Sources */,
 				AE472C2820C5A3A1005F6FE9 /* NewMessageController.swift in Sources */,
 				AEDE49E720B9EEA300C5F1BB /* SignUpController.swift in Sources */,
+				446027D420DB3EEE008E1810 /* UserProfileFoodPhotoCell.swift in Sources */,
 				4453FFF120D9F32100B872F8 /* PhotoSelectorCell.swift in Sources */,
 				4453FFF420D9F87B00B872F8 /* Post.swift in Sources */,
 				AE1F281720BC8A2800E6C39A /* PhotoSelectorController.swift in Sources */,

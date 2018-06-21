@@ -12,6 +12,7 @@ import Firebase
 class UserProfileController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     let cellId = "cellId"
+    let headerId = "headerId"
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,11 +23,39 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
         
         fetchUser()
         //register UserProfile Header as an extension to UserProfileController
-        collectionView?.register(UserProfileHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: "headerId")
+        collectionView?.register(UserProfileHeader.self, forSupplementaryViewOfKind: UICollectionElementKindSectionHeader, withReuseIdentifier: headerId)
         
-        collectionView?.register(UICollectionViewCell.self, forCellWithReuseIdentifier: cellId)
+        collectionView?.register(UserProfileFoodPhotoCell.self, forCellWithReuseIdentifier: cellId)
         
         setupLogOutButton()
+        fetchPosts()
+    }
+    
+    var posts = [Post]()
+    fileprivate func fetchPosts() {
+        guard let uid = Auth.auth().currentUser?.uid else { return }
+        
+        let ref = Database.database().reference().child("posts").child(uid)
+        ref.observeSingleEvent(of: .value, with: { (snapshot) in
+            //print(snapshot.value)
+            
+            guard let dictionaries = snapshot.value as? [String: Any] else { return }
+            
+            dictionaries.forEach({ (key, value) in
+                //print("Key \(key), Value: \(value)")
+                
+                guard let dictionary = value as? [String: Any] else { return }
+                
+                let post = Post(dictionary: dictionary)
+                self.posts.append(post)
+            })
+            
+            self.collectionView?.reloadData()
+            
+        }) { (err) in
+            print("Failed to fetch posts:", err)
+        }
+        
     }
     
     fileprivate func setupLogOutButton() {
@@ -59,13 +88,13 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     }
     
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 7
+        return posts.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath)
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: cellId, for: indexPath) as! UserProfileFoodPhotoCell
         
-        cell.backgroundColor = .purple
+        cell.post = posts[indexPath.item]
         
         return cell
     }
@@ -118,38 +147,6 @@ class UserProfileController: UICollectionViewController, UICollectionViewDelegat
     }
 }
 
-//struct User {
-//    
-//    let bio: String
-//    let username: String
-//    let profileImageUrl: String
-//    let name: String
-//    let foodRank: String
-//    let userId: String
-//    let score: String
-//    var followers = [String]()
-//    var following = [String]()
-//    var channelLog = [String]()
-//    var messageLog = [String]()
-//    var privateMessaging = Bool()
-//
-//    init(dictionary: [String: Any]) {
-//        self.username = dictionary["username"] as? String ?? ""
-//        self.profileImageUrl = dictionary["profileImageUrl"]  as? String ?? ""
-//        self.name = dictionary["username"] as? String ?? ""
-//        self.foodRank = dictionary["userId"] as? String ?? ""
-//        self.userId = dictionary["userId"] as? String ?? ""
-//        self.score = dictionary["score"] as? String ?? ""
-//        self.followers = dictionary["followers"] as? [String] ?? [""]
-//        self.following = dictionary["following"] as? [String] ?? [""]
-//        self.messageLog = dictionary["messageLog"] as? [String] ?? [""]
-//        self.channelLog = dictionary["channelLog"] as? [String] ?? [""]
-//        self.bio = dictionary["bio"] as? String ?? ""
-//        self.privateMessaging = dictionary["privateMessaging"] as? Bool ?? false
-//
-//    }
-//}
-//
 
 
 

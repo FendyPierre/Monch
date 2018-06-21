@@ -14,15 +14,17 @@ class UserProfileHeader: UICollectionViewCell {
     
     var user: User? {
         didSet {
+            guard let profileImageUrl = user?.profileImageUrl else  {return}
             //use this to retrieve information from user object
-            setupProfileImage()
+            profileImageView.loadImage(urlString: profileImageUrl)
+            //setupProfileImage()
             
             //usernameLabel.text = user?.username
         }
     }
     
-    let profileImageView: UIImageView = {
-        let iv = UIImageView()
+    let profileImageView: CustomImageView = {
+        let iv = CustomImageView()
         return iv
     }()
     
